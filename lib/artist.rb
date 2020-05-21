@@ -1,20 +1,27 @@
 class Artist
 
-  attr_accessor :name, :songs
+  attr_accessor :name
   @@all =[]
 
   def initialize(name)
     @name = name
-    @songs = []
     @@all << self
   end
 
   def add_song(song)
-    @songs << song   
+    song.artist = self
+    
+      
+      
   end
   
   def songs
-    @songs
+    Song.all.select do |song|
+      if song.artist == self
+        song
+      end  
+    end
+    
   end
 
   def save
@@ -37,8 +44,8 @@ class Artist
   end
 
   def print_songs
-    @songs.each do |song|
-      puts song.name
-    end
+    self.songs
+ 
+  
   end
 end
