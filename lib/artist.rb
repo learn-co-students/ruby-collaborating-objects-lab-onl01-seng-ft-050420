@@ -25,7 +25,9 @@ class Artist
   end
 
   def save
-    @@all << self #saves the artist name to the all array
+    if !@@all.include?(self)
+        @@all << self
+    end
   end
 
   def self.all
