@@ -26,16 +26,12 @@ def self.find(name)
 artist.name == name
   end
 end
-def self.create(name)
-  artist = self.new(name)
-  @@all << artist
-  artist
-end
+
 def self.find_or_create_by_name(name)
     if self.find(name)
       self.find(name)
     else
-      self.create(name)
+      self.new(name)
     end
 end
 
